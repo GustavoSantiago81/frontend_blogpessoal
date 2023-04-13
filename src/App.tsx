@@ -6,6 +6,7 @@ import { Grid } from "@material-ui/core";
 import Navbar from "./components/estaticos/navbar/Navbar";
 import Footer from "./components/estaticos/footer/Footer";
 import Home from "./paginas/home/Home";
+import Login from "./paginas/login/Login";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -36,6 +37,7 @@ function App() {
           <Home />
         </Grid>
       </Grid>
+      <Login/>
       <Footer />
     </>
   );
