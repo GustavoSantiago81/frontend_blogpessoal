@@ -19,9 +19,10 @@ function App() {
         <Routes>
             <Route path="/" element={<Login/>} />
             <Route path="/home" element={<Home/>} />
+            <Route path="/login" element={<Login/>}/>
         </Routes>
       </div>
-      <Login/>
+ 
       <Grid container spacing={3}>
         <Grid item xs={12} sm={12}>
           <Home />
@@ -44,7 +45,7 @@ function App() {
         <Grid item xs={12} sm={3}>
           <Home />
         </Grid>
-      </Grid>
+      </Grid> 
       <Footer />
     </BrowserRouter>
   );
