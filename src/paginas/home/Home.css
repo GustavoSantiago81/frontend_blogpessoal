@@ -9,3 +9,7 @@
     display: block;
     margin: 0 auto
 }
+
+.corFundo {
+    background-color: black;
+}
