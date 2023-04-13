@@ -3,8 +3,8 @@ import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
 import "./App.css";
 import { Grid } from "@material-ui/core";
-import Navbar from "./components/navbar/Navbar";
-import Footer from "./components/footer/footer";
+import Navbar from "./components/estaticos/navbar/Navbar";
+import Footer from "./components/estaticos/footer/Footer";
 import Home from "./paginas/home/Home";
 
 function App() {
