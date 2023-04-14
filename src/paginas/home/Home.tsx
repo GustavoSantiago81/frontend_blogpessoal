@@ -1,5 +1,5 @@
 import React from "react";
-import { Grid, Paper } from '@material-ui/core';
+import { Grid, Paper, Typography } from '@material-ui/core';
 import {Box, Button} from "@mui/material";
 import "./Home.css";
 import { colors } from "@mui/material";
@@ -9,23 +9,24 @@ import { red } from "@mui/material/colors";
 function Home() {
     return (
         <>
-            <div className='corFundo'>
-                <Paper>
-                        <Box p={2} color="grey">
-                            <Box color="green" display="flex" justifyContent="center">
-                                <h1>Titulo</h1>
-                            </Box>
-                            <img src="https://images.pexels.com/photos/270348/pexels-photo-270348.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="" width={"100%"} height={"100%"}/>
-                            <Box color="black" display="flex" justifyContent="center" p={2}>
-                                <Button variant='contained' color="primary">Texto 1</Button>
-                                <Button variant="contained" color="secondary">Texto 2</Button>
-                            </Box>
+            <Grid container direction="row" justifyContent="center" alignItems="center" className='caixa'>
+                <Grid alignItems="center" item xs={6}>
+                    <Box paddingX={6} >
+                        <Typography variant="h3" gutterBottom color="textPrimary" component="h3" align="center" className='titulo'>Seja bem vindo(a)!</Typography>
+                        <Typography variant="h5" gutterBottom color="textPrimary" component="h5" align="center" className='titulo'>expresse aqui os seus pensamentos e opiniões!</Typography>
+                    </Box>
+                    <Box display="flex" justifyContent="center">
+                        <Box marginRight={1}>
                         </Box>
-                    
-                </Paper>
-
-            </div>
-            
+                        <Button variant="outlined" className='botao'>Ver Postagens</Button>
+                    </Box>
+                </Grid>
+                <Grid item xs={6} >
+                    <img src="https://i.imgur.com/H88yIo2.png" alt="" width="500px" height="500px" />
+                </Grid>
+                <Grid xs={12} className='postagens'>
+                </Grid>
+            </Grid>  
         </>
     );
 }
