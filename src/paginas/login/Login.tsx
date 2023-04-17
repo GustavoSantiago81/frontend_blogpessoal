@@ -5,10 +5,18 @@ import { Box, Button } from '@mui/material';
 import { Link } from 'react-router-dom';
 
 function Login() {
+
+    // Vem lógica
+
+    let numero = 0
+
     return (
         <Grid container direction='row' justifyContent='center' alignItems='center'>
             <Grid alignItems='center' xs={6}>
                 <Box paddingX={6}>
+
+                <but onClick={() => {numero = numero + 1 console.log(numero)}}adicionar 1</but
+
                     <form>
                         <Typography variant='h3' gutterBottom color='textPrimary' component='h3' align='center' className='textos1'>Entrar</Typography>
                         <TextField id='usuario' label='usuário' variant='outlined' name='usuario' margin='normal' fullWidth />
