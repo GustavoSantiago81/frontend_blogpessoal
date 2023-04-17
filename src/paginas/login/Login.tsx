@@ -2,12 +2,16 @@ import React, { ChangeEvent, useState } from 'react'
 import './Login.css'
 import { Grid, Typography, TextField } from '@material-ui/core';
 import { Box, Button } from '@mui/material';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { login } from '../../service/Service'
+import UsuarioLogin from '../../models/UsuarioLogin';
 
 function Login() {
 
     // Vem lógica
     //let numero = 0
+    const useHistory = useNavigate()
+
     const [numero, setNumero] = useState(0)
 
     const [userLogin, setUserLogin] = useState<UsuarioLogin>({
@@ -28,6 +32,16 @@ function Login() {
         console.log(userLogin)
     }
 
+    async function onSubmit(event: ChangeEvent<HTMLFormElement>){
+        event.preventDefault()
+        try {
+            await login('/usuarios/logar', userLogin, setUserLogin)
+            alert('Usuario logado com sucesso')
+        } catch(error) {
+            console.log(error)
+            alert('Usúario ou senha invalidos')
+        }
+    }
 
     return (
         <Grid container direction='row' justifyContent='center' alignItems='center'>
@@ -49,9 +63,9 @@ function Login() {
                           variant='outlined'
                           name='usuario'
                           value={userLogin.usuario}
-                          onChange={(event) => updateModel(event: ChangeEvent <HTMLInputElement></HTMLInputElement>)}
+                          onChange={(event: ChangeEvent<HTMLInputElement>) => updateModel(event)}
                           margin='normal'
-                          fullWidth />
+                          fullWidth/>
 
                         <TextField
                           id='senha'
