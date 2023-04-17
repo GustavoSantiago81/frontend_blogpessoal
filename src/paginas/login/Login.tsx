@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { ChangeEvent, useState } from 'react'
 import './Login.css'
 import { Grid, Typography, TextField } from '@material-ui/core';
 import { Box, Button } from '@mui/material';
@@ -9,6 +9,25 @@ function Login() {
     // Vem lógica
     //let numero = 0
     const [numero, setNumero] = useState(0)
+
+    const [userLogin, setUserLogin] = useState<UsuarioLogin>({
+        id: 0,
+        nome: '',
+        usuario: '',
+        foto: '',
+        senha: '',
+        token: ''
+    })
+
+    function updateModel(event: ChangeEvent <HTMLInputElement>){
+        setUserLogin({
+            ...userLogin,
+            [event.target.name]: event.target.value
+        })
+
+        console.log(userLogin)
+    }
+
 
     return (
         <Grid container direction='row' justifyContent='center' alignItems='center'>
@@ -24,8 +43,24 @@ function Login() {
 
                     <form>
                         <Typography variant='h3' gutterBottom color='textPrimary' component='h3' align='center' className='textos1'>Entrar {numero}  </Typography>
-                        <TextField id='usuario' label='usuário' variant='outlined' name='usuario' margin='normal' fullWidth />
-                        <TextField id='senha' label='senha' variant='outlined' name='senha' margin='normal' type='password'fullWidth />
+                        <TextField
+                          id='usuario'
+                          label='usuário'
+                          variant='outlined'
+                          name='usuario'
+                          value={userLogin.usuario}
+                          onChange={(event) => updateModel(event: ChangeEvent <HTMLInputElement></HTMLInputElement>)}
+                          margin='normal'
+                          fullWidth />
+
+                        <TextField
+                          id='senha'
+                          label='senha'
+                          variant='outlined'
+                          name='senha'
+                          margin='normal'
+                          type='password'fullWidth />
+                          
                         <Box marginTop={2} textAlign='center'>
                             <Link to='/home' className='text-decorator-none'>
                                 <Button type='submit' variant='contained' color='primary'>
