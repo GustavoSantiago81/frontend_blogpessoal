@@ -1,4 +1,4 @@
-import React, { ChangeEvent, useState } from 'react'
+import React, { ChangeEvent, useState, useEffect } from 'react'
 import './Login.css'
 import { Grid, Typography, TextField } from '@material-ui/core';
 import { Box, Button } from '@mui/material';
@@ -6,11 +6,17 @@ import { Link, useNavigate } from 'react-router-dom';
 import { login } from '../../service/Service'
 import UsuarioLogin from '../../models/UsuarioLogin';
 import CadastroUsuario from '../cadastroUsuario/CadastroUsuario';
+import useLocalStorage from 'react-use-localstorage';
+import { api } from '../../service/Service';
 
 function Login() {
 
     // Vem lógica
     //let numero = 0
+    //let history = useHistory()
+
+    const [token, setToken] = useLocalStorage('token')
+    
     const useHistory = useNavigate()
 
     const [numero, setNumero] = useState(0)
@@ -30,13 +36,23 @@ function Login() {
             [event.target.name]: event.target.value
         })
 
-        console.log(userLogin)
+        //console.log(userLogin)
     }
+
+    useEffect(()=>{
+        if(token !== ""){
+            useHistory('/home')
+        }
+    }, [token])
 
     async function onSubmit(event: ChangeEvent<HTMLFormElement>){
         event.preventDefault()
+        //console.log('userLogin: ' + userLogin)
+        //console.log('userLogin: ' + Object.values(userLogin))
         try {
-            await login('/usuarios/logar', userLogin, setUserLogin)
+            //const resposta = await api.post('/usuarios/logar', userLogin)
+            //setToken(resposta.data.token)
+            await login('/usuarios/logar', userLogin, setToken)
             alert('Usuario logado com sucesso')
         } catch(error) {
             console.log(error)
@@ -56,7 +72,7 @@ function Login() {
                     console.log(numero)
                 }} >adicionar 1 </button>
 
-                    <form>
+                    <form onSubmit={onSubmit}>
                         <Typography variant='h3' gutterBottom color='textPrimary' component='h3' align='center' className='textos1'>Entrar {numero}  </Typography>
                         <TextField
                           id='usuario'
@@ -72,16 +88,16 @@ function Login() {
                           id='senha'
                           label='senha'
                           variant='outlined'
+                          value={userLogin.senha}
+                          onChange={(event:ChangeEvent<HTMLInputElement>)=>updateModel(event)}
                           name='senha'
                           margin='normal'
                           type='password'fullWidth />
                           
                         <Box marginTop={2} textAlign='center'>
-                            <Link to='/home' className='text-decorator-none'>
                                 <Button type='submit' variant='contained' color='primary'>
                                     Logar
                                 </Button>
-                            </Link>
                         </Box>
                     </form>
                     <Box display='flex' justifyContent='center' marginTop={2}>
