@@ -1,6 +1,7 @@
 import React, {ChangeEvent, useEffect, useState} from 'react'
-import { Grid, Typography, Button, TextField, Box } from '@mui/material'
 import './CadastroUsuario.css'
+import { Button, Divider, Grid, TextField, Typography } from '@material-ui/core'
+import { Box } from '@mui/material'
 import { Link, useNavigate } from 'react-router-dom'
 import  Usuario  from '../../models/Usuario'
 import { cadastroUsuario } from '../../service/Service'
@@ -25,7 +26,7 @@ function CadastroUsuario(){
         senha: ''
     })
 
-    const [confirmarSenha,setConfirmarSenha] = useState<String>("")
+    const [confirmarSenha, setConfirmarSenha] = useState<String>('')
     
     function confirmarSenhaHandle(event: ChangeEvent<HTMLInputElement>){
         setConfirmarSenha(event.target.value)
@@ -45,6 +46,7 @@ function CadastroUsuario(){
             await cadastroUsuario('/usuarios/cadastrar', usuario, setUsuarioResult)
             alert('Usuário cadastrado com sucesso')
         } catch (error) {
+            console.log(error)
             alert('Por favor, verifique os campos')
         }
         } else {
@@ -64,6 +66,7 @@ function CadastroUsuario(){
     useEffect(() => {
         if(usuarioResult.id !== 0) {
         history('/login')
+        console.log(usuarioResult)
         }
     }, [usuarioResult])
 
@@ -87,50 +90,69 @@ function CadastroUsuario(){
                       </Typography>
                         <TextField
                             value={usuario.nome}
-                            onChange={(e: ChangeEvent<HTMLInputElement>) =>
-                            updateModel(e)}
+                            onChange={(event: ChangeEvent<HTMLInputElement>) =>
+                            updateModel(event)}
                           id='nome'
                           label='nome'
                           variant='outlined'
                           name='nome'
                           margin='normal'
+                          required
                           fullWidth/>
 
                         <TextField
                             value={usuario.usuario}
-                            onChange={(e: ChangeEvent<HTMLInputElement>) =>
-                                updateModel(e)
+                            onChange={(event: ChangeEvent<HTMLInputElement>) =>
+                                updateModel(event)
                             }
                           id='usuario'
                           label='usuário'
                           variant='outlined'
                           name='usuario'
                           margin='normal'
+                          required
+                          type='email'
                           fullWidth/>
 
                         <TextField
+                            value={usuario.foto}
+                            onChange={(event: ChangeEvent<HTMLInputElement>) =>
+                                updateModel(event)
+                            }
+                          id='foto'
+                          label='Foto (URL)'
+                          variant='outlined'
+                          name='foto'
+                          margin='normal'
+                          fullWidth/>  
+
+                        <TextField
                         value={usuario.senha}
-                        onChange={(e: ChangeEvent<HTMLInputElement>) =>
-                            updateModel(e)
+                        onChange={(event: ChangeEvent<HTMLInputElement>) =>
+                            updateModel(event)
                         }
                           id='senha'
                           label='senha'
                           variant='outlined'
                           name='senha'
                           margin='normal'
-                          type='password'fullWidth />
+                          required
+                          type='password'
+                          fullWidth />
 
                         <TextField
                         value={confirmarSenha}
-                        onChange={(e: ChangeEvent<HTMLInputElement>) =>
-                            confirmarSenhaHandle(e)
+                        onChange={(event: ChangeEvent<HTMLInputElement>) =>
+                            confirmarSenhaHandle(event)
                         }
                           id='confirmarSenha'
                           label='confirmar senha'
                           variant='outlined'
                           name='confirmarSenha'
                           margin='normal'
-                          type='password'fullWidth />
+                          required
+                          type='password'
+                          fullWidth />
 
                         <Box marginTop={2} textAlign='center'>
                             <Link

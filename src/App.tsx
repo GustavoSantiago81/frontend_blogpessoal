@@ -9,6 +9,8 @@ import Home from "./paginas/home/Home";
 import Login from "./paginas/login/Login";
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import CadastroUsuario from "./paginas/cadastroUsuario/CadastroUsuario";
+import ListaTemas from "./components/temas/listaTemas/ListaTemas";
+import ListaPostagens from "./components/postagens/listaPostagens/ListaPostagens";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -24,6 +26,8 @@ function App() {
             <Route path="/home" element={<Home/>} />
             <Route path="/login" element={<Login/>}/>
             <Route path="/cadastrarusuario" element={<CadastroUsuario/>}/>            
+            <Route path="/temas" element={<ListaTemas/>}/>            
+            <Route path="/postagens" element={<ListaPostagens/>}/>            
         </Routes>
       </div>
  
