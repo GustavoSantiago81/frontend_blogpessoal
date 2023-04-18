@@ -5,6 +5,7 @@ import { Box, Button } from '@mui/material';
 import { Link, useNavigate } from 'react-router-dom';
 import { login } from '../../service/Service'
 import UsuarioLogin from '../../models/UsuarioLogin';
+import CadastroUsuario from '../cadastroUsuario/CadastroUsuario';
 
 function Login() {
 
@@ -87,7 +88,14 @@ function Login() {
                         <Box marginRight={1}>
                             <Typography variant='subtitle1' gutterBottom align='center'>Não tem uma conta?</Typography>
                         </Box>
-                            <Typography variant='subtitle1' gutterBottom align='center' className='textos1'>Cadastre-se</Typography>
+                        <Link to='/cadastrarusuario'>
+                        <Typography
+                              variant='subtitle1'
+                              gutterBottom
+                              align='center'
+                              className='textos1'>Cadastre-se</Typography>
+                        </Link>
+                            
                     </Box>
                 </Box>
             </Grid>

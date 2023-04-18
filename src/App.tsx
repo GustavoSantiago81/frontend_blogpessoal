@@ -8,6 +8,7 @@ import Footer from "./components/estaticos/footer/Footer";
 import Home from "./paginas/home/Home";
 import Login from "./paginas/login/Login";
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import CadastroUsuario from "./paginas/cadastroUsuario/CadastroUsuario";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -22,6 +23,7 @@ function App() {
             <Route path="/" element={<Login/>} />
             <Route path="/home" element={<Home/>} />
             <Route path="/login" element={<Login/>}/>
+            <Route path="/cadastrarusuario" element={<CadastroUsuario/>}/>            
         </Routes>
       </div>
  

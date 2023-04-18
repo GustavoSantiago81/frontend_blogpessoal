@@ -9,6 +9,7 @@ import LinkedInIcon from "@mui/icons-material/LinkedIn";
 function Footer() {
   return (
     <>
+        <div className="footer">
             <Grid container direction="row" justifyContent="center" alignItems="center">
                 <Grid alignItems="center" item xs={12}>
                     <Box className='box1'>
@@ -39,6 +40,8 @@ function Footer() {
                     </Box>
                 </Grid>
             </Grid>
+        </div>
+            
         </>
   )
 }
