@@ -6,29 +6,72 @@ import {
   CardContent,
   Typography,
 } from "@mui/material";
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { Link,useNavigate } from "react-router-dom";
+import { getAll } from "../../../service/Service";
+import useLocalStorage from "react-use-localstorage";
+import { Tema } from '../../../models/Tema'
 
 function ListaTemas() {
+
+  const [temas, setTemas] = useState<Tema[]>([])
+  const [token, setToken] = useLocalStorage('token')
+  const history = useNavigate()
+
+  async function getAllTemas() {
+    await getAll('/temas', setTemas, {
+      headers: {
+        Authorization: token
+      }
+    })
+  }
+
+  useEffect( () => {
+    getAllTemas()
+  }, [])
+
+  useEffect(() => {
+    if(token === ''){
+      alert('Sem token')
+      history('/login')
+    }
+  }, [])
+
   return (
     <>
-      <Box>
-        <Card sx={{ maxWidth: 345 }}>
+      {temas.map((tema) => (
+        <Box m={2} >
+        <Card variant="outlined">
           <CardContent>
-            <Typography gutterBottom variant="h5" component="div">
+            <Typography color="textSecondary" gutterBottom>
               Tema
             </Typography>
-            <Typography variant="body2" color="text.secondary">
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perspiciatis molestias necessitatibus officiis dolorem nostrum laborum quas omnis, saepe facere veritatis quis, quos fugiat ex. Ducimus commodi voluptas nisi. Excepturi, doloremque.
+            <Typography variant="h5" component="h2">
+              {tema.descricao}
             </Typography>
-
           </CardContent>
-
           <CardActions>
-            <Button color="primary" variant="contained" size="small">Editar</Button>
-            <Button color="secondary" size="small">Deletar</Button>
+            <Box display="flex" justifyContent="center" mb={1.5} >
+
+              <Link to="" className="text-decorator-none">
+                <Box mx={1}>
+                  <Button variant="contained" className="marginLeft" size='small' color="primary" >
+                    atualizar
+                  </Button>
+                </Box>
+              </Link>
+              <Link to="" className="text-decorator-none">
+                <Box mx={1}>
+                  <Button variant="contained" size='small' color="secondary">
+                    deletar
+                  </Button>
+                </Box>
+              </Link>
+            </Box>
           </CardActions>
         </Card>
       </Box>
+      ))}
     </>
   );
 }

@@ -14,3 +14,11 @@ export const login = async(url: string, dados: Object, setDados: Function) => {
     const resposta = await api.post(url, dados)
     setDados(resposta.data.token)
 }
+
+// tipagem headers é object
+export const getAll = async(url: any, setDados: any, headers: Object) => {
+    const resposta = await api.get(url, headers)
+    setDados(resposta.data)
+    //console.log(resposta)
+    console.log(resposta.data)
+}

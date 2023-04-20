@@ -5,6 +5,7 @@ import "./Home.css";
 import { colors } from "@mui/material";
 import { blue } from "@material-ui/core/colors";
 import { red } from "@mui/material/colors"; 
+import TabPostagens from "../../components/postagens/tabPostagens/TabPostagens";
 
 function Home() {
     return (
@@ -21,11 +22,19 @@ function Home() {
                         <Button variant="outlined" className='botao'>Ver Postagens</Button>
                     </Box>
                 </Grid>
+
                 <Grid item xs={6} >
                     <img src="https://i.imgur.com/H88yIo2.png" alt="" width="500px" height="500px" />
                 </Grid>
+
                 <Grid xs={12} className='postagens'>
+                
                 </Grid>
+                
+                <Grid xs={12} style={{ backgroundColor: 'white' }}>
+                    <TabPostagens />
+                </Grid>
+                
             </Grid>  
         </>
     );

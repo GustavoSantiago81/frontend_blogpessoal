@@ -26,7 +26,7 @@ function Navbar() {
                             
                         </Box>
                             
-                        <Link to={'/listaPostagens'}>
+                        <Link to={'/postagens'}>
                             <Box mx={1} className='cursor'>
                                 <Typography variant="h6" color="inherit">
                                     postagens

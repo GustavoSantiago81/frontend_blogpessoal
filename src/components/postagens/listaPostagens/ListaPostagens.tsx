@@ -1,4 +1,6 @@
 import React from 'react'
+import './ListaPostagens.css'
+import { Link } from 'react-router-dom'
 import {
     Box,
     Button,
@@ -11,21 +13,23 @@ import {
 function ListaPostagens() {
   return (
     <>
-      <Box>
-        <Card sx={{ maxWidth: 345 }}>
+      <Box m={4}>
+        <Card >
           <CardContent>
-            <Typography gutterBottom variant="h5" component="div">
-              Tema
+            <Typography color="textSecondary" gutterBottom>
+              Titulo da postagem:
             </Typography>
-            <Typography variant="body2" color="text.secondary">
-              Descriçao
+            <Typography variant="h5" component="h2">
+              texto da postagem
             </Typography>
-
+            <Typography variant="body1" component="p">
+              Tema da postagem
+            </Typography>
+            
           </CardContent>
-
           <CardActions>
-            <Button color="primary" variant="contained" size="small">Editar</Button>
-            <Button color="secondary" size="small">Deletar</Button>
+            <Button color='primary' variant='contained' size="small">Editar</Button>
+            <Button color='secondary' variant='contained' size="small">Deletar</Button>
           </CardActions>
         </Card>
       </Box>
