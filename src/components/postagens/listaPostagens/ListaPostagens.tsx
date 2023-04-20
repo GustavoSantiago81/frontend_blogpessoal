@@ -15,14 +15,14 @@ import useLocalStorage from "react-use-localstorage";
 
 function ListaPostagens() {
   const [postagens, setPostagens] = useState<Postagem[]>([]);
-  const [token, setToken] = useLocalStorage("token");
+  const [token, setToken] = useLocalStorage('token');
   const history = useNavigate()
 
   async function getAllPostagens() {
     await getAll("/postagens", setPostagens, {
       headers: {
-        Authorization: token,
-      },
+        Authorization: token
+      }
     });
   }
 
@@ -55,7 +55,7 @@ function ListaPostagens() {
             </CardContent>
             <CardActions>
               <Button color="primary" variant="contained" size="small">
-                Editar
+                Atualizar
               </Button>
               <Button color="secondary" variant="contained" size="small">
                 Deletar

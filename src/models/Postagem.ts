@@ -4,5 +4,5 @@ export interface Postagem{
     titulo: string;
     texto: string;
     data: string;
-    tema: Tema;
+    tema?: Tema | null;
 }
