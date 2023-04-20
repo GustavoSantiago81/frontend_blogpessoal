@@ -43,9 +43,11 @@ function Navbar() {
                         </Link>
                         
                         <Box mx={1} className='cursor'>
+                            <Link to={'/cadastrarTema'}>
                             <Typography variant="h6" color="inherit">
                                 cadastrar tema
                             </Typography>
+                            </Link>
                         </Box>
                         <Link to='/login' className='text-decorator-none'>
                             <Box mx={1} className='cursor'>
