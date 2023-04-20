@@ -23,7 +23,7 @@ function ListaPostagens() {
       headers: {
         Authorization: token
       }
-    });
+    })
   }
 
   useEffect( () => {
