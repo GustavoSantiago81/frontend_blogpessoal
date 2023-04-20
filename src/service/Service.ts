@@ -32,3 +32,12 @@ export const atualizarTema = async(url: any, dados: any, setDados: any, headers:
     const resposta = await api.put(url, dados, headers)
     setDados(resposta.data)
 }
+
+export const getById = async(url: any, setDados: any, headers: Object) => {
+    const resposta = await api.get(url, headers)
+    setDados(resposta.data)
+}
+
+export const deleteById = async(url: any, headers: Object) => {
+    await api.delete(url, headers)
+}
