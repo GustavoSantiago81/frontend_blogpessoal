@@ -1,11 +1,16 @@
 import React, { ChangeEvent, useState, useEffect } from "react";
 import { Button, TextField } from "@mui/material";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import useLocalStorage from "react-use-localstorage";
 import { Tema } from "../../../models/Tema";
-import { cadastrarTema } from "../../../service/Service";
+import {
+  atualizarTema,
+  cadastrarTema,
+  getById,
+} from "../../../service/Service";
 
 function CadastroTema() {
+  const { id } = useParams<{ id: string }>();
   const history = useNavigate();
   const [token, setToken] = useLocalStorage("token");
 
@@ -31,16 +36,27 @@ function CadastroTema() {
 
   async function onSubmit(event: ChangeEvent<HTMLFormElement>) {
     event.preventDefault();
+    console.log("tema" + JSON.stringify(tema));
 
-    try {
-      await cadastrarTema("/temas", tema, setTema, {
+    if (id !== undefined) {
+      console.log(tema);
+      await atualizarTema(`/tema`, tema, setTema, {
         headers: {
           Authorization: token,
         },
       });
-      alert("Tema cadastrado");
-    } catch (error) {
-      alert("Erro");
+      alert("Tema atualizado");
+    } else {
+      try {
+        await cadastrarTema("/temas", tema, setTema, {
+          headers: {
+            Authorization: token,
+          },
+        });
+        alert("Tema cadastrado");
+      } catch (error) {
+        alert("Erro");
+      }
     }
   }
 
@@ -49,6 +65,20 @@ function CadastroTema() {
       history("/temas");
     }
   }, [tema.id]);
+
+  useEffect(() => {
+    if (id !== undefined) {
+      findById(id);
+    }
+  }, [id]);
+
+  async function findById(id: string) {
+    getById(`/temas/${id}`, setTema, {
+      headers: {
+        Authorization: token,
+      },
+    });
+  }
 
   return (
     <>
