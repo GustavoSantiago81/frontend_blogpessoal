@@ -7,7 +7,7 @@ import TabList from '@material-ui/lab/TabList';
 import TabPanel from '@material-ui/lab/TabPanel';
 import { Tabs, Typography } from "@material-ui/core";
 import {Box} from '@mui/material';
-import ListaPostagens from "../listaPostagens/ListaPostagens";
+import ListaPostagens from "../listaPostagens/ListaPostagem";
 
 function TabPostagens() {
     //const classes = useStyles();

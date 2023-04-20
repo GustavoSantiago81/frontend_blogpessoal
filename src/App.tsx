@@ -10,7 +10,7 @@ import Login from "./paginas/login/Login";
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import CadastroUsuario from "./paginas/cadastroUsuario/CadastroUsuario";
 import ListaTemas from "./components/temas/listaTemas/ListaTemas";
-import ListaPostagens from "./components/postagens/listaPostagens/ListaPostagens";
+import ListaPostagens from "./components/postagens/listaPostagens/ListaPostagem";
 import CadastroTema from "./components/temas/cadastroTema/CadastroTema";
 import CadastroPostagem from "./components/postagens/cadastroPostagem/CadastroPostagem";
 import DeletarPostagem from './components/postagens/deletarPostagem/DeletarPostagem'
