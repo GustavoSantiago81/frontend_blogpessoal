@@ -13,6 +13,8 @@ import ListaTemas from "./components/temas/listaTemas/ListaTemas";
 import ListaPostagens from "./components/postagens/listaPostagens/ListaPostagens";
 import CadastroTema from "./components/temas/cadastroTema/CadastroTema";
 import CadastroPostagem from "./components/postagens/cadastroPostagem/CadastroPostagem";
+import DeletarPostagem from './components/postagens/deletarPostagem/DeletarPostagem'
+import DeletarTema from './components/temas/deletarTema/DeletarTema'
 
 function App() {
   const [count, setCount] = useState(0);
@@ -27,15 +29,18 @@ function App() {
             <Route path="/" element={<Login/>} />
             <Route path="/home" element={<Home/>} />
             <Route path="/login" element={<Login/>}/>
-            <Route path="/cadastrarusuario" element={<CadastroUsuario/>}/>            
+            <Route path="/cadastrarusuario" element={<CadastroUsuario/>}/>
+
             <Route path="/temas" element={<ListaTemas/>}/>            
-            <Route path="/postagens" element={<ListaPostagens/>}/>            
+            <Route path="/postagens" element={<ListaPostagens/>}/>
+
             <Route path="/cadastrarTema" element={<CadastroTema/>}/>            
             <Route path="/atualizarTema/:id" element={<CadastroTema/>}/>            
-            <Route path="/deletarTema/:id" element={<CadastroTema/>}/>            
+            <Route path="/deletarTema/:id" element={<DeletarTema/>}/>
+
             <Route path="/cadastrarPostagem" element={<CadastroPostagem/>}/>            
             <Route path="/atualizarPostagem/:id" element={<CadastroPostagem/>}/>            
-            <Route path="/deletarPostagem/:id" element={<CadastroPostagem/>}/>            
+            <Route path="/deletarPostagem/:id" element={<DeletarPostagem/>}/>            
         </Routes>
       </div>
  

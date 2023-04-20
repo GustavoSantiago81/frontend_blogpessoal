@@ -54,12 +54,18 @@ function ListaPostagens() {
               </Typography>
             </CardContent>
             <CardActions>
-              <Button color="primary" variant="contained" size="small">
-                Atualizar
-              </Button>
-              <Button color="secondary" variant="contained" size="small">
-                Deletar
-              </Button>
+              <Link to={`/cadastrarPostagem/${postagem.id}`}>
+                <Button color="primary" variant="contained" size="small">
+                  Atualizar
+                </Button>
+              </Link>
+              
+              <Link to={`/deletarPostagem/${postagem.id}`}>
+                <Button color="secondary" variant="contained" size="small">
+                  Deletar
+                </Button>
+              </Link>
+              
             </CardActions>
           </Card>
         </Box>
