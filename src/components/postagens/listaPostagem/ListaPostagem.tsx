@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import "./ListaPostagens.css";
+import "./ListaPostagem.css";
 import { Link, useNavigate } from "react-router-dom";
 import {
   Box,
@@ -13,7 +13,7 @@ import { getAll } from "../../../service/Service";
 import { Postagem } from "../../../models/Postagem";
 import useLocalStorage from "react-use-localstorage";
 
-function ListaPostagens() {
+function ListaPostagem() {
   const [postagens, setPostagens] = useState<Postagem[]>([]);
   const [token, setToken] = useLocalStorage('token');
   const history = useNavigate()
@@ -74,4 +74,4 @@ function ListaPostagens() {
   );
 }
 
-export default ListaPostagens;
+export default ListaPostagem;
