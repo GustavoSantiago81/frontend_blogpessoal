@@ -54,7 +54,7 @@ function ListaPostagem() {
               </Typography>
             </CardContent>
             <CardActions>
-              <Link to={`/cadastrarPostagem/${postagem.id}`}>
+              <Link to={`/atualizarPostagem/${postagem.id}`}>
                 <Button color="primary" variant="contained" size="small">
                   Atualizar
                 </Button>

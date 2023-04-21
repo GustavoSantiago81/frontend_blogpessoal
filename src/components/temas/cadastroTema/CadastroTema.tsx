@@ -32,7 +32,7 @@ function CadastroTema() {
       alert("sem token");
       history("/login");
     }
-  }, []);
+  }, [token]);
 
   async function onSubmit(event: ChangeEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -40,7 +40,7 @@ function CadastroTema() {
 
     if (id !== undefined) {
       console.log(tema);
-      await atualizarTema(`/tema`, tema, setTema, {
+      await atualizarTema('/temas', tema, setTema, {
         headers: {
           Authorization: token,
         },
@@ -60,11 +60,11 @@ function CadastroTema() {
     }
   }
 
-  useEffect(() => {
-    if (tema.id !== 0) {
-      history("/temas");
-    }
-  }, [tema.id]);
+  // useEffect(() => {
+  //   if (tema.id !== 0) {
+  //     history("/temas");
+  //   }
+  // }, [tema.id]);
 
   useEffect(() => {
     if (id !== undefined) {
