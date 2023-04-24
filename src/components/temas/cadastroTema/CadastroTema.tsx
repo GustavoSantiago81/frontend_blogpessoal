@@ -46,6 +46,7 @@ function CadastroTema() {
         },
       });
       alert("Tema atualizado");
+      history('/home')
     } else {
       try {
         await cadastrarTema("/temas", tema, setTema, {
@@ -54,6 +55,7 @@ function CadastroTema() {
           },
         });
         alert("Tema cadastrado");
+        history('/home')
       } catch (error) {
         alert("Erro");
       }
