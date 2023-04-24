@@ -37,7 +37,7 @@ function App() {
             <Route path="/cadastrarTema" element={<CadastroTema/>}/>            
             <Route path="/atualizarTema/:id" element={<CadastroTema/>}/>            
             <Route path="/deletarTema/:id" element={<DeletarTema/>}/>
-
+            // /:id é uma variavel
             <Route path="/cadastrarPostagem" element={<CadastroPostagem/>}/>            
             <Route path="/atualizarPostagem/:id" element={<CadastroPostagem/>}/>            
             <Route path="/deletarPostagem/:id" element={<DeletarPostagem/>}/>            
