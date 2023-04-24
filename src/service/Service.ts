@@ -23,12 +23,12 @@ export const getAll = async(url: any, setDados: any, headers: Object) => {
     console.log(resposta.data)
 }
 
-export const cadastrarTema = async(url: any, dados: any, setDados: any, headers: any) => {
+export const post = async(url: any, dados: any, setDados: any, headers: any) => {
     const resposta = await api.post(url, dados, headers)
     setDados(resposta.data)
 }
 
-export const atualizarTema = async(url: any, dados: any, setDados: any, headers: any) => {
+export const put = async(url: any, dados: any, setDados: any, headers: any) => {
     const resposta = await api.put(url, dados, headers)
     setDados(resposta.data)
 }

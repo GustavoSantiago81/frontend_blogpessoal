@@ -4,8 +4,8 @@ import { useNavigate, useParams } from "react-router-dom";
 import useLocalStorage from "react-use-localstorage";
 import { Tema } from "../../../models/Tema";
 import {
-  atualizarTema,
-  cadastrarTema,
+  post,
+  put,
   getById,
 } from "../../../service/Service";
 
@@ -13,7 +13,6 @@ function CadastroTema() {
   const { id } = useParams<{ id: string }>();
   const history = useNavigate();
   const [token, setToken] = useLocalStorage("token");
-
   const [tema, setTema] = useState<Tema>({
     id: 0,
     descricao: "",
@@ -40,7 +39,7 @@ function CadastroTema() {
 
     if (id !== undefined) {
       console.log(tema);
-      await atualizarTema('/temas', tema, setTema, {
+      await put('/temas', tema, setTema, {
         headers: {
           Authorization: token,
         },
@@ -49,7 +48,7 @@ function CadastroTema() {
       history('/home')
     } else {
       try {
-        await cadastrarTema("/temas", tema, setTema, {
+        await post("/temas", tema, setTema, {
           headers: {
             Authorization: token,
           },

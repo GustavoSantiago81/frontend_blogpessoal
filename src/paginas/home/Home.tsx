@@ -6,6 +6,7 @@ import { colors } from "@mui/material";
 import { blue } from "@material-ui/core/colors";
 import { red } from "@mui/material/colors"; 
 import TabPostagens from "../../components/postagens/tabPostagens/TabPostagens";
+import ModalPostagem from "../../components/postagens/modalPostagem/ModalPostagem";
 
 function Home() {
     return (
@@ -18,6 +19,7 @@ function Home() {
                     </Box>
                     <Box display="flex" justifyContent="center">
                         <Box marginRight={1}>
+                            <ModalPostagem/>
                         </Box>
                         <Button variant="outlined" className='botao'>Ver Postagens</Button>
                     </Box>
