@@ -82,7 +82,7 @@ function CadastroTema() {
 
   return (
     <>
-      <h2>Cadastrar Tema</h2>
+      <h2>{tema.id!==0? 'Editar tema' : 'Cadastrar tema'}</h2>
       <form onSubmit={onSubmit}>
         <TextField
           label="Descrição do tema"
@@ -94,7 +94,8 @@ function CadastroTema() {
           required
         />
         <Button type="submit" variant="contained">
-          Cadastrar{" "}
+          {/* // if ternario */}
+          {tema.id !== 0 ? 'Editar' : 'Cadastrar'}
         </Button>
       </form>
     </>
