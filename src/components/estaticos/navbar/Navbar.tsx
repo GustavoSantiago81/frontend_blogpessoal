@@ -4,70 +4,83 @@ import { Box } from "@mui/material";
 import Login from "../../../paginas/login/Login";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
-import useLocalStorage from "react-use-localstorage";
+import { useDispatch, useSelector } from "react-redux";
+import { TokenState } from "../../../store/tokens/tokensReducer";
+import { addToken } from "../../../store/tokens/action";
 
 function Navbar() {
-  const [token, setToken] = useLocalStorage("token");
+  const token = useSelector<TokenState, TokenState["tokens"]>(
+    (state) => state.tokens
+  );
   const history = useNavigate();
+  const dispatch = useDispatch();
 
   function goLogout() {
-    setToken("");
+    dispatch(addToken(''));
     alert("Usuário deslogado");
     history("/login");
   }
 
-  return (
-    <div className="navbar">
-      <AppBar position="static">
-        <Toolbar variant="dense">
-          <Box className="cursor">
-            <Typography variant="h5" color="inherit">
-              BlogPessoal
-            </Typography>
+  var navbarComponent;
+
+  if(token!= ''){
+    navbarComponent = <div className="navbar">
+    <AppBar position="static">
+      <Toolbar variant="dense">
+        <Box className="cursor">
+          <Typography variant="h5" color="inherit">
+            BlogPessoal
+          </Typography>
+        </Box>
+
+        <Box display="flex" justifyContent="start">
+          <Box mx={1} className="cursor">
+            <Link to={"/home"}>
+              <Typography variant="h6" color="inherit">
+                home
+              </Typography>
+            </Link>
           </Box>
 
-          <Box display="flex" justifyContent="start">
+          <Link to={"/postagens"}>
             <Box mx={1} className="cursor">
-              <Link to={"/home"}>
-                <Typography variant="h6" color="inherit">
-                  home
-                </Typography>
-              </Link>
-            </Box>
-
-            <Link to={"/postagens"}>
-              <Box mx={1} className="cursor">
-                <Typography variant="h6" color="inherit">
-                  postagens
-                </Typography>
-              </Box>
-            </Link>
-
-            <Link to={"/temas"}>
-              <Box mx={1} className="cursor">
-                <Typography variant="h6" color="inherit">
-                  temas
-                </Typography>
-              </Box>
-            </Link>
-
-            <Box mx={1} className="cursor">
-              <Link to={"/cadastrarTema"}>
-                <Typography variant="h6" color="inherit">
-                  cadastrar tema
-                </Typography>
-              </Link>
-            </Box>
-
-            <Box mx={1} className="cursor" onClick={goLogout}>
               <Typography variant="h6" color="inherit">
-                logout
+                postagens
               </Typography>
             </Box>
+          </Link>
+
+          <Link to={"/temas"}>
+            <Box mx={1} className="cursor">
+              <Typography variant="h6" color="inherit">
+                temas
+              </Typography>
+            </Box>
+          </Link>
+
+          <Box mx={1} className="cursor">
+            <Link to={"/cadastrarTema"}>
+              <Typography variant="h6" color="inherit">
+                cadastrar tema
+              </Typography>
+            </Link>
           </Box>
-        </Toolbar>
-      </AppBar>
-    </div>
+
+          <Box mx={1} className="cursor" onClick={goLogout}>
+            <Typography variant="h6" color="inherit">
+              logout
+            </Typography>
+          </Box>
+        </Box>
+      </Toolbar>
+    </AppBar>
+  </div>
+  }
+
+  return (
+    <>
+      {navbarComponent}
+    </>
   );
 }
 
