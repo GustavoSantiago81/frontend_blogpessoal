@@ -8,14 +8,16 @@ import UsuarioLogin from '../../models/UsuarioLogin';
 import CadastroUsuario from '../cadastroUsuario/CadastroUsuario';
 import useLocalStorage from 'react-use-localstorage';
 import { api } from '../../service/Service';
+import { useDispatch } from 'react-redux';
 
 function Login() {
 
     // Vem lógica
     //let numero = 0
     //let history = useHistory()
+    const dispatch = useDispatch()
 
-    const [token, setToken] = useLocalStorage('token')
+    const [token, setToken] = useState('')
     
     const useHistory = useNavigate()
 
