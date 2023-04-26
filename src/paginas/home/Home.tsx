@@ -9,6 +9,7 @@ import TabPostagens from "../../components/postagens/tabPostagens/TabPostagens";
 import ModalPostagem from "../../components/postagens/modalPostagem/ModalPostagem";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
+import { TokenState } from "../../store/tokens/tokensReducer";
 
 function Home() {
   const history = useNavigate();
