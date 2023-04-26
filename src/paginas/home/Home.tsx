@@ -7,7 +7,7 @@ import { blue } from "@material-ui/core/colors";
 import { red } from "@mui/material/colors";
 import TabPostagens from "../../components/postagens/tabPostagens/TabPostagens";
 import ModalPostagem from "../../components/postagens/modalPostagem/ModalPostagem";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { TokenState } from "../../store/tokens/tokensReducer";
 
@@ -59,9 +59,11 @@ function Home() {
             <Box marginRight={1}>
               <ModalPostagem />
             </Box>
-            <Button variant="outlined" className="botao">
-              Ver Postagens
-            </Button>
+            <Link to={"/postagens"}>
+              <Button variant="outlined" className="botao">
+                Ver Postagens
+              </Button>
+            </Link>
           </Box>
         </Grid>
 
