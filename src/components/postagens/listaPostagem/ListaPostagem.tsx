@@ -12,10 +12,14 @@ import {
 import { getAll } from "../../../service/Service";
 import { Postagem } from "../../../models/Postagem";
 import useLocalStorage from "react-use-localstorage";
+import { TokenState } from "../../../store/tokens/tokensReducer";
+import { useSelector } from "react-redux";
 
 function ListaPostagem() {
   const [postagens, setPostagens] = useState<Postagem[]>([]);
-  const [token, setToken] = useLocalStorage('token');
+  const token = useSelector<TokenState, TokenState["tokens"]>(
+    (state) => state.tokens
+  );
   const history = useNavigate()
 
   async function getAllPostagens() {

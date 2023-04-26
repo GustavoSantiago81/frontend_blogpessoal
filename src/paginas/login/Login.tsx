@@ -9,6 +9,7 @@ import CadastroUsuario from '../cadastroUsuario/CadastroUsuario';
 import useLocalStorage from 'react-use-localstorage';
 import { api } from '../../service/Service';
 import { useDispatch } from 'react-redux';
+import { addToken } from '../../store/tokens/action';
 
 function Login() {
 
@@ -43,6 +44,7 @@ function Login() {
 
     useEffect(()=>{
         if(token !== ""){
+            dispatch(addToken(token))
             useHistory('/home')
         }
     }, [token])
