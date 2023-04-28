@@ -7,6 +7,7 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { TokenState } from "../../../store/tokens/tokensReducer";
 import { addToken } from "../../../store/tokens/action";
+import {toast} from 'react-toastify'
 
 function Navbar() {
   const token = useSelector<TokenState, TokenState["tokens"]>(
@@ -17,7 +18,7 @@ function Navbar() {
 
   function goLogout() {
     dispatch(addToken(''));
-    alert("Usuário deslogado");
+    toast("Usuário deslogado");
     history("/login");
   }
 
