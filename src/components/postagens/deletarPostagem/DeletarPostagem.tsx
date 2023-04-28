@@ -5,6 +5,7 @@ import { useNavigate, useParams } from 'react-router-dom'
 import useLocalStorage from 'react-use-localstorage'
 import { Postagem } from '../../../models/Postagem'
 import { deleteById, getById } from '../../../service/Service'
+import { toast } from 'react-toastify'
 
 function DeletarPostagem() {
   const history = useNavigate()
@@ -40,7 +41,7 @@ function DeletarPostagem() {
         'Authorization': token
       }
     })
-    alert('Postagem deletada com sucesso!')
+    toast('Postagem deletada com sucesso!')
   }
 
   function nao(){
