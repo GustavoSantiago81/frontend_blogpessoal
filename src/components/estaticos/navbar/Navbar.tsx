@@ -18,7 +18,7 @@ function Navbar() {
 
   function goLogout() {
     dispatch(addToken(''));
-    toast("Usuário deslogado");
+    toast.info("Usuário deslogado");
     history("/login");
   }
 
