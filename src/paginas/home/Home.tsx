@@ -75,7 +75,6 @@ function Home() {
             height="500px"
           />
         </Grid>
-
         <Grid xs={12} className="postagens"></Grid>
 
         <Grid xs={12} style={{ backgroundColor: "white" }}>
