@@ -1,0 +1,29 @@
+.footerFundo {
+    background-color: rgb(65, 97, 31);
+}
+
+.box1{
+    background-color: #3F51B5;
+    height: 120px;
+}
+
+.box2{
+    background-color: #303F9F;
+    height: 60px;
+}
+
+.icons{
+    font-size: 30px !important;
+    color: white;
+}
+
+.textos{
+   color: white;
+}
+
+.footer{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+  }
